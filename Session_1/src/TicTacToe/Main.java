@@ -6,8 +6,6 @@ public class Main
     {
         TicTacToe board = new TicTacToe();
 
-
-
     }
 
     public static void printBoard(String[][] array)
