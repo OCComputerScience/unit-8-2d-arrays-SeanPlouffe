@@ -41,7 +41,7 @@ public class TicTacToe
 
     public boolean validateLocation(int row, int col)
     {
-        if(!(row < board.length-1 && col < board[row].length))
+        if(!(row < board.length && col < board[row].length))
         {
             return false;
         }
@@ -66,6 +66,8 @@ public class TicTacToe
             {
                 board[row][col] = "X";
             }
+
+            turn++;
         }
     }
 
