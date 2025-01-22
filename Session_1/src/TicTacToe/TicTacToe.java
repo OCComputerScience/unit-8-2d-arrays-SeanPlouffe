@@ -77,7 +77,10 @@ public class TicTacToe
     {
         for(int column = 0; column < board[0].length; column++)
         {
-            if(board[0][column].equals(board[1][column]) && board[0][column].equals(board[2][column]))
+            boolean thisColumn = board[0][column].equals(board[1][column]) &&
+                                board[0][column].equals(board[2][column]);
+
+            if(thisColumn && !board[0][column].equals("-"))
             {
                 return true;
             }
@@ -90,11 +93,41 @@ public class TicTacToe
        This should return a boolean for if any rows contains three consecutive X's or O's
      */
 
-     /* Check rows
+    public boolean checkRows()
+    {
+        for(int row = 0; row < board.length; row++)
+        {
+            boolean thisRow = board[row][0].equals(board[row][1]) &&
+                                board[row][0].equals(board[row][2]);
+
+            if(thisRow && !board[row][0].equals("-"))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+     /* Check Diagonals
        This should return a boolean for if any diagonal contains three consecutive X's or O's
      */
+
+    public boolean checkDiagonals()
+    {
+        boolean diagOne = board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2]);
+        boolean diagTwo = board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][0]);
+        boolean center = board[1][1].equals("-");
+
+        return (diagOne || diagTwo) && !center;
+    }
 
      /* Check wins
        This should return a boolean if the other 3 methods return true
      */
+
+    public boolean checkWin()
+    {
+        return checkColumns() || checkDiagonals() || checkRows();
+    }
 }
