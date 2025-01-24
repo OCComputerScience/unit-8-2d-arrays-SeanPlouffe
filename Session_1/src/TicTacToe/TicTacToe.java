@@ -58,7 +58,7 @@ public class TicTacToe
     {
         if(validateLocation(row, col))
         {
-            if(turn % 2 == 0)
+            if(turn % 2 != 0)
             {
                 board[row][col] = "O";
             }
@@ -130,6 +130,13 @@ public class TicTacToe
 
     public boolean checkWin()
     {
+
+        if(turn >= 9)
+        {
+            System.out.println("Tie");
+            return true;
+        }
+
         return checkColumns() || checkDiagonals() || checkRows();
     }
 }
