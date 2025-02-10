@@ -12,8 +12,11 @@ public class Chessboard
 
     public void fillBoard()
     {
-        chessBoard[0] = endRows;
-        chessBoard[chessBoard.length-1] = endRows;
+        for(int i = 0; i < chessBoard[0].length; i++)
+        {
+            chessBoard[0][i] = endRows[i];
+            chessBoard[chessBoard.length-1][i] = endRows[i];
+        }
         Arrays.fill(chessBoard[1], pawn);
         Arrays.fill(chessBoard[chessBoard.length-2], pawn);
 
