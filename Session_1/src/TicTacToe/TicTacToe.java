@@ -9,6 +9,7 @@ public class TicTacToe
 
     private String[][] board = new String[3][3];
     private int turn;
+    private String emptySpace = "-";
 
     // Add constructor to initialize an empty board
 
@@ -16,7 +17,7 @@ public class TicTacToe
     {
         for(int row = 0; row < board.length; row++)
         {
-            Arrays.fill(board[row], "-");
+            Arrays.fill(board[row], emptySpace);
         }
         turn = 0;
     }
@@ -117,11 +118,13 @@ public class TicTacToe
 
     public boolean checkDiagonals()
     {
+        boolean center = board[1][1].equals("-");
+        if(center) return false;
+
         boolean diagOne = board[0][0].equals(board[1][1]) && board[0][0].equals(board[2][2]);
         boolean diagTwo = board[0][2].equals(board[1][1]) && board[0][2].equals(board[2][0]);
-        boolean center = board[1][1].equals("-");
 
-        return (diagOne || diagTwo) && !center;
+        return diagOne || diagTwo;
     }
 
      /* Check wins
